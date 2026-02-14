@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Momentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #2c3e50;
+            background-image: radial-gradient(#4ca1af, #2c3e50);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: #fff;
+            font-family: 'Indie Flower', cursive;
+            font-size: 3rem;
+            margin-top: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 2s ease;
+            text-align: center;
+        }
+
+        /* Contenedor de las fotos */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px;
+            max-width: 1200px;
+        }
+
+        /* Estilo Polaroid */
+        .polaroid {
+            background: #fff;
+            padding: 15px 15px 40px 15px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.4s ease;
+            width: 250px;
+            cursor: pointer;
+            position: relative;
+            opacity: 0; 
+            animation: popIn 0.8s forwards;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 250px; 
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+
+        .caption {
+            text-align: center;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        /* EFECTO HOVER */
+        .polaroid:hover {
+            transform: scale(1.15) rotate(0deg) !important;
+            z-index: 100;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Rotaciones */
+        .p1 { transform: rotate(5deg); animation-delay: 0.2s; }
+        .p2 { transform: rotate(-3deg); animation-delay: 0.4s; }
+        .p3 { transform: rotate(8deg); animation-delay: 0.6s; }
+        .p4 { transform: rotate(-6deg); animation-delay: 0.8s; }
+        .p5 { transform: rotate(4deg); animation-delay: 1s; }
+        .p6 { transform: rotate(-4deg); animation-delay: 1.2s; }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5) translateY(50px); }
+            to { opacity: 1; }
+        }
+
+        /* Botón de regreso */
+        .btn-back {
+            margin: 40px;
+            padding: 10px 30px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-bottom: 60px; /* Espacio extra al final */
+        }
+        .btn-back:hover {
+            background: #fff;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="TikVid.io_7560117147742014727.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>Solo Tu Mor </h1>
+
+    <div class="gallery-container">
+        
+        <div class="polaroid p1">
+            <img src="photo_4936108439470017500_y.jpg" alt="Foto 1">
+            <div class="caption">SOLO TU MI AMORRR</div>
+        </div>
+
+        <div class="polaroid p2">
+            <img src="photo_4936108439470017499_y.jpg" alt="Foto 2">
+            <div class="caption">Enserio quiero todo contigo Morxitoo</div>
+        </div>
+
+        <div class="polaroid p3">
+            <img src="photo_4936108439470017501_y.jpg" alt="Foto 3">
+            <div class="caption">Solo quiero que seas tu en mi vida  </div>
+        </div>
+
+        <div class="polaroid p4">
+            <img src="photo_4936108439470017502_y.jpg" alt="Foto 4">
+            <div class="caption">Mi vida mi amor mi todo morxitoo</div>
+        </div>
+
+        <div class="polaroid p5">
+            <img src="photo_4936108439470017503_y.jpg" alt="Foto 5">
+            <div class="caption">Contigoo siempre amorxtioo te re amoo</div>
+        </div>
+        
+        <div class="polaroid p6">
+            <img src="photo_4936108439470017504_y.jpg" alt="Foto 6">
+            <div class="caption">Te Amo ❤️</div>
+        </div>
+
+    </div>
+
+    <a href="https://elzsaxa1.github.io/YOUAN/" class="btn-back">Toca si me amas jadjs</a>
+
+    <script>
+        // SCRIPT PARA ACTIVAR LA MÚSICA AUTOMÁTICAMENTE
+        window.onload = function() {
+            var audio = document.getElementById("bgMusic");
+            audio.volume = 0.5; // Volumen medio
+            
+            // Intento de reproducción automática
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    console.log("Música iniciada correctamente.");
+                })
+                .catch(error => {
+                    console.log("Autoplay bloqueado. Esperando toque.");
+                    // Si falla, activamos al tocar cualquier parte de la pantalla
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                    document.body.addEventListener('touchstart', function() {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        }
+    </script>
+</body>
+</html>
